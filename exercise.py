@@ -8,7 +8,7 @@ print("=" * 80)
 print(f"{'DN':<50} {'Description':<20} {'Speed':<10} {'MTU':<5}")
 print("-" * 80)
 
-# Вставляем ограничение здесь:
+
 for item in data["imdata"][:3]:  
     attributes = item["l1PhysIf"]["attributes"]
     dn = attributes["dn"]
