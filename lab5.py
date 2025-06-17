@@ -1,68 +1,35 @@
-import re
-txt = "The rain in Spain"
-x = re.search("^The.*Spain$", txt)
 
 import re
 
-txt = "The rain in Spain"
-x = re.findall("ai", txt)
-print(x)
+# 1. Match 'a' followed by zero or more 'b's
+print("1:", re.fullmatch(r'ab*', 'abbb'))
 
-import re
+# 2. Match 'a' followed by two to three 'b's
+print("2:", re.fullmatch(r'ab{2,3}', 'abbb'))
 
-txt = "The rain in Spain"
-x = re.findall("Portugal", txt)
-print(x)
+# 3. Sequences of lowercase letters joined with an underscore
+print("3:", re.findall(r'[a-z]+_[a-z]+', 'this_is a_test_example'))
 
-import re
+# 4. One uppercase letter followed by lowercase letters
+print("4:", re.findall(r'[A-Z][a-z]+', 'This Is A Test'))
 
-txt = "The rain in Spain"
-x = re.search("\s", txt)
+# 5. 'a' followed by anything, ending in 'b'
+print("5:", re.fullmatch(r'a.*b', 'axxb'))
 
-print("The first white-space character is located in position:", x.start())
+# 6. Replace space, comma, or dot with colon
+print("6:", re.sub(r'[ ,.]', ':', 'apple, banana. orange'))
 
-import re
+# 7. Convert snake_case to camelCase
+def to_camel(s):
+    parts = s.split('_')
+    return parts[0] + ''.join(word.capitalize() for word in parts[1:])
+print("7:", to_camel('snake_case_example'))
 
-txt = "The rain in Spain"
-x = re.search("Portugal", txt)
-print(x)
+# 8. Split string at uppercase letters
+print("8:", re.findall(r'[A-Z][^A-Z]*', 'SplitAtUpperCase'))
 
-import re
+# 9. Insert spaces between words starting with capital letters
+print("9:", re.sub(r'([a-z])([A-Z])', r'\1 \2', 'InsertSpaceHere'))
 
-txt = "The rain in Spain"
-x = re.split("\s", txt)
-print(x)
-
-import re
-
-txt = "The rain in Spain"
-x = re.split("\s", txt, 1)
-print(x)
-
-import re
-
-txt = "The rain in Spain"
-x = re.sub("\s", "9", txt)
-print(x)
-
-import re
-
-txt = "The rain in Spain"
-x = re.sub("\s", "9", txt, 2)
-print(x)
-
-txt = "The rain in Spain"
-x = re.search("ai", txt)
-print(x) #this will print an object
-
-txt = "The rain in Spain"
-x = re.search(r"\bS\w+", txt)
-print(x.span())
-
-txt = "The rain in Spain"
-x = re.search(r"\bS\w+", txt)
-print(x.string)
-
-txt = "The rain in Spain"
-x = re.search(r"\bS\w+", txt)
-print(x.group())
+# 10. Convert camelCase to snake_case
+print("10:", re.sub(r'([a-z0-9])([A-Z])', r'\1_\2', 'camelCaseToSnake').lower())
